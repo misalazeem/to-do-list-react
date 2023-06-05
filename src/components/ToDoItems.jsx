@@ -1,6 +1,9 @@
 import { React, useState } from 'react';
+import PropTypes from 'prop-types';
 
-function ToDoItem({ itemProp, setTodos, delTodo, setUpdate }) {
+function ToDoItem({
+  itemProp, setTodos, delTodo, setUpdate,
+}) {
   const [editing, setEditing] = useState(false);
   const handleChange = (id) => {
     setTodos((prevState) => prevState.map((todo) => {
@@ -43,11 +46,18 @@ function ToDoItem({ itemProp, setTodos, delTodo, setUpdate }) {
           onKeyDown={handleUpdatedDone}
           className="text-input"
         />
-        <button className="update-button" onClick={handleEditing}>Edit</button>
-        <button className="delete-button" onClick={() => delTodo(itemProp.id)}>Delete</button>
+        <button className="update-button" type="button" onClick={handleEditing}>Edit</button>
+        <button className="delete-button" type="button" onClick={() => delTodo(itemProp.id)}>Delete</button>
       </li>
     </>
   );
 }
+
+ToDoItem.propTypes = {
+  setTodos: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+  itemProp: PropTypes.func.isRequired,
+};
 
 export default ToDoItem;

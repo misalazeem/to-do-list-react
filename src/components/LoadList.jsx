@@ -1,6 +1,6 @@
 import React from 'react';
-import ToDoItem from './ToDoItems';
 import PropTypes from 'prop-types';
+import ToDoItem from './ToDoItems';
 
 function LoadList({
   todosProps, setTodos, delTodo, setUpdate,
@@ -8,14 +8,23 @@ function LoadList({
   return (
     <ul>
       {todosProps.map((todo) => (
-        <ToDoItem key={todo.id} itemProp={todo} setTodos={setTodos} delTodo={delTodo} setUpdate={setUpdate} />
+        <ToDoItem
+          key={todo.id}
+          itemProp={todo}
+          setTodos={setTodos}
+          delTodo={delTodo}
+          setUpdate={setUpdate}
+        />
       ))}
     </ul>
   );
 }
 
 LoadList.propTypes = {
-  clickEvent: PropTypes.func.isRequired,
+  todosProps: PropTypes.func.isRequired,
+  setTodos: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
 };
 
 export default LoadList;

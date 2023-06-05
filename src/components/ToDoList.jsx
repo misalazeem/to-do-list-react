@@ -4,6 +4,19 @@ import ListInput from './ListInput';
 import LoadList from './LoadList';
 
 function ToDoList() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: 'Go for a run',
+      complete: true,
+    },
+    {
+      id: 2,
+      title: 'Cook Food',
+      complete: false,
+    },
+  ]);
+
   const delTodo = (id) => {
     setTodos([
       ...todos.filter((todo) => todo.id !== id),
@@ -14,7 +27,7 @@ function ToDoList() {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
-          todo.title = updatedTitle;
+          return { ...todo, title: updatedTitle };
         }
         return todo;
       }),
@@ -30,18 +43,6 @@ function ToDoList() {
     setTodos([...todos, newTodo]);
   };
 
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Go for a run',
-      complete: true,
-    },
-    {
-      id: 2,
-      title: 'Cook Food',
-      complete: false,
-    },
-  ]);
   return (
     <>
       <div className="list-container">

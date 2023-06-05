@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import PropTypes from 'prop-types';
 
 function ListInput({ addTodoItem }) {
   const [title, setTitle] = useState('');
@@ -30,5 +31,9 @@ function ListInput({ addTodoItem }) {
     </>
   );
 }
+
+ListInput.propTypes = {
+  addTodoItem: PropTypes.func.isRequired,
+};
 
 export default ListInput;
